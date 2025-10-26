@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "pb": "Program Beasiswa Kaltim Tuntas",
+        "nama": "Beasiswa Kaltim Tuntas",
+        "potongan": 100
+    },
+    {
+        "id": 2,
+        "pb": "Program Beasiswa KIP",
+        "nama": "Beasiswa KIP",
+        "potongan": 100
+    },
+    {
+        "id": 3,
+        "pb": "Program Beasiswa Gratispol",
+        "nama": "Beasiswa Gratispol",
+        "potongan": 50
+    }
+]

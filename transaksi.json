@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "username": "syawal",
+    "nama_beasiswa": "Beasiswa Gratispol",
+    "ukt_awal": 8000000,
+    "potongan": 100,
+    "bayar": 0
+  },
+  {
+    "id": 2,
+    "username": "pasya",
+    "nama_beasiswa": "Beasiswa KIP",
+    "ukt_awal": 8000000,
+    "potongan": 100,
+    "bayar": 0
+  },
+  {
+    "id": 3,
+    "username": "riaz",
+    "nama_beasiswa": "Tidak Ada",
+    "ukt_awal": 6000000,
+    "potongan": 0,
+    "bayar": 6000000
+  },
+  {
+    "id": 4,
+    "username": "pompom",
+    "nama_beasiswa": "Tidak Ada",
+    "ukt_awal": 8000000,
+    "potongan": 0,
+    "bayar": 8000000
+  }
+]

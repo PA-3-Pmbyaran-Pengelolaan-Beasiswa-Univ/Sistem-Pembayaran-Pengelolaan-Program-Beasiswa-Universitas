@@ -1,0 +1,112 @@
+[
+  {
+    "username": "admin",
+    "password": "admin123",
+    "nim": "",
+    "role": "admin",
+    "beasiswa": "",
+    "saldo": 9999999999999999
+  },
+  {
+    "username": "oscar",
+    "password": "jos",
+    "nim": "2509116107",
+    "role": "mahasiswa",
+    "beasiswa": "",
+    "saldo": 10000000000
+  },
+  {
+    "username": "ilham",
+    "password": "ilham123",
+    "nim": "2509116091",
+    "role": "mahasiswa",
+    "beasiswa": "",
+    "saldo": 10000000
+  },
+  {
+    "username": "shafa",
+    "password": "shafa",
+    "nim": "2509116112",
+    "role": "mahasiswa",
+    "beasiswa": "",
+    "saldo": 10000000
+  },
+  {
+    "username": "pasya",
+    "password": "pasya123",
+    "nim": "2509116108",
+    "role": "mahasiswa",
+    "beasiswa": [
+      {
+        "id": 2,
+        "pb": "Program Beasiswa KIP",
+        "nama": "Beasiswa KIP",
+        "potongan": 100
+      }
+    ],
+    "saldo": 10000000,
+    "ukt": 8000000
+  },
+  {
+    "username": "syawal",
+    "password": "syawal123",
+    "nim": "2509116079",
+    "role": "mahasiswa",
+    "beasiswa": [
+      {
+        "id": 3,
+        "pb": "Program Beasiswa Gratispol",
+        "nama": "Beasiswa Gratispol",
+        "potongan": 100
+      }
+    ],
+    "saldo": 10000000
+  },
+  {
+    "username": "riaz",
+    "password": "riaz123",
+    "nim": "2509116106",
+    "role": "mahasiswa",
+    "beasiswa": [],
+    "saldo": 4000000,
+    "ukt": 6000000
+  },
+  {
+    "username": "semkar",
+    "password": "semkar123",
+    "nim": "2509116102",
+    "role": "mahasiswa",
+    "beasiswa": [],
+    "saldo": 10000000
+  },
+  {
+    "username": "akbar",
+    "password": "akbar123",
+    "nim": "2509116089",
+    "role": "mahasiswa",
+    "beasiswa": [
+      {
+        "id": 3,
+        "pb": "Program Beasiswa Gratispol",
+        "nama": "Beasiswa Gratispol",
+        "potongan": 50
+      },
+      {
+        "id": 1,
+        "pb": "Program Beasiswa Kaltim Tuntas",
+        "nama": "Beasiswa Kaltim Tuntas",
+        "potongan": 100
+      }
+    ],
+    "saldo": 15000000
+  },
+  {
+    "username": "pompom",
+    "password": "pompom123",
+    "nim": "2509116083",
+    "role": "mahasiswa",
+    "beasiswa": [],
+    "saldo": 2000000,
+    "ukt": 8000000
+  }
+]
