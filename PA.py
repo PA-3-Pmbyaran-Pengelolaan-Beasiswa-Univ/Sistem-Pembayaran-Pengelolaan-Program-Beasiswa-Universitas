@@ -142,53 +142,60 @@ def admin_lihat_mahasiswa():
     tabel_akun(akun_data)
 
 def admin_tambah_beasiswa_ke_mahasiswa():
-    nim = input("Masukkan NIM mahasiswa: ").strip()
-    if not nim:
-        print("NIM kosong")
-        return
-    siswa = cari_akun_nim(nim)
-    if not siswa:
-        print("NIM tidak ditemukan")
-        return
-    tabel_beasiswa(daftar_beasiswa)
-    sid = input("Pilih ID beasiswa: ").strip()
     try:
-        sid = int(sid)
-    except Exception:
-        print("ID harus angka")
-        return
-    pilih = None
-    for b in daftar_beasiswa:
-        if b.get('id') == sid:
-            pilih = b
-            break
-    if not pilih:
-        print("Beasiswa tidak ada")
-        return
-    try:
-        current = siswa.get('beasiswa')
-        if not bisa_di_iter(current):
-            if current:
-                siswa['beasiswa'] = [current]
-            else:
-                siswa['beasiswa'] = []
-    except Exception:
-        siswa['beasiswa'] = []
-    ids = []
-    try:
-        for it in siswa['beasiswa']:
-            try:
-                ids.append(it.get('id'))
-            except Exception:
-                pass
-    except Exception:
-        pass
-    if pilih.get('id') in ids:
-        print("Beasiswa sudah terdaftar di akun")
-        return
-    siswa['beasiswa'].append(pilih)
-    simpan(FILE_AKUN, akun_data)
-    print("Beasiswa ditambahkan ke akun mahasiswa")
+        nim = input("Masukkan NIM mahasiswa: ").strip()
+        if not nim:
+            print("NIM kosong")
+            return
+        siswa = cari_akun_nim(nim)
+        if not siswa:
+            print("NIM tidak ditemukan")
+            return
+        tabel_beasiswa(daftar_beasiswa)
+        sid = input("Pilih ID beasiswa: ").strip()
+        try:
+            sid = int(sid)
+        except Exception:
+            print("ID harus angka")
+            return
+        pilih = None
+        for b in daftar_beasiswa:
+            if b.get('id') == sid:
+                pilih = b
+                break
+        if not pilih:
+            print("Beasiswa tidak ada")
+            return
+        try:
+            current = siswa.get('beasiswa')
+            if not bisa_di_iter(current):
+                if current:
+                    siswa['beasiswa'] = [current]
+                else:
+                    siswa['beasiswa'] = []
+        except Exception:
+            siswa['beasiswa'] = []
+        ids = []
+        try:
+            for it in siswa['beasiswa']:
+                try:
+                    ids.append(it.get('id'))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        if pilih.get('id') in ids:
+            print("Beasiswa sudah terdaftar di akun")
+            return
+        siswa['beasiswa'].append(pilih)
+        simpan(FILE_AKUN, akun_data)
+        print("Beasiswa ditambahkan ke akun mahasiswa")
+    except KeyboardInterrupt:
+        print("\nJangan CTRL+C")
+        masuk()
+    except EOFError:
+        print("\nJangan CTRL+Z")
+        masuk()
 
 def admin_set_ukt():
     try:
@@ -296,55 +303,61 @@ def admin_edit_beasiswa():
         except Exception:
             print("ID harus angka")
             return
-        found = None
         try:
-            for idx, it in enumerate(siswa.get('beasiswa', [])):
+            for i, it in enumerate(siswa.get('beasiswa', [])):
                 try:
                     if it.get('id') == sid:
-                        found = (idx, it)
+                        siswa['beasiswa'].pop(i)
                         break
                 except Exception:
                     try:
                         if int(it) == sid:
-                            found = (idx, it)
+                            siswa['beasiswa'].pop(i)
                             break
                     except Exception:
                         pass
         except Exception:
             pass
-        if not found:
-            print("Beasiswa tidak ditemukan")
-            return
-        idx, cur = found
-        try:
-            nama_lama = cur.get('nama','')
-            pb_lama = cur.get('pb','')
-            pot_lama = cur.get('potongan',0)
-        except Exception:
-            nama_lama = str(cur)
-            pb_lama = ''
-            pot_lama = 0
-        nama_baru = input(f"Nama baru (enter biar tetap '{nama_lama}'): ").strip()
-        pb_baru = input(f"Program baru (enter biar tetap '{pb_lama}'): ").strip()
-        pot_baru = input(f"Potongan baru (enter biar tetap '{pot_lama}'): ").strip()
-        if pot_baru != '':
-            try:
-                pot_baru = int(pot_baru)
-            except Exception:
-                print("Potongan harus angka")
-                return
-        else:
-            pot_baru = pot_lama
-        try:
-            if nama_baru:
-                siswa['beasiswa'][idx]['nama'] = nama_baru
-            if pb_baru:
-                siswa['beasiswa'][idx]['pb'] = pb_baru
-            siswa['beasiswa'][idx]['potongan'] = pot_baru
-        except Exception:
-            siswa['beasiswa'][idx] = {'id': sid, 'nama': nama_baru or nama_lama, 'pb': pb_baru or pb_lama, 'potongan': pot_baru}
         simpan(FILE_AKUN, akun_data)
-        print("Beasiswa diperbarui")
+        tabel_beasiswa(daftar_beasiswa)
+        sid = input("Pilih ID beasiswa: ").strip()
+        try:
+            sid = int(sid)
+        except Exception:
+            print("ID harus angka")
+            return
+        pilih = None
+        for b in daftar_beasiswa:
+            if b.get('id') == sid:
+                pilih = b
+                break
+        if not pilih:
+            print("Beasiswa tidak ada")
+            return
+        try:
+            current = siswa.get('beasiswa')
+            if not bisa_di_iter(current):
+                if current:
+                    siswa['beasiswa'] = [current]
+                else:
+                    siswa['beasiswa'] = []
+        except Exception:
+            siswa['beasiswa'] = []
+        ids = []
+        try:
+            for it in siswa['beasiswa']:
+                try:
+                    ids.append(it.get('id'))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        if pilih.get('id') in ids:
+            print("Beasiswa sudah terdaftar di akun")
+            return
+        siswa['beasiswa'].append(pilih)
+        simpan(FILE_AKUN, akun_data)
+        print("Beasiswa diganti")
     except KeyboardInterrupt:
         print("\nJangan CTRL+C")
         admin_edit_beasiswa()
@@ -380,6 +393,15 @@ def bayar_ukt(user):
             simpan(FILE_TRANSAKSI, daftar_transaksi)
             print("Pembayaran UKT tanpa beasiswa berhasil.")
             return
+        be = user.get('beasiswa')
+        try:
+            daftar = list(be) if bisa_di_iter(be) else [be]
+        except Exception:
+            daftar = [be]
+        if not daftar:
+            print("Belum ada beasiswa")
+            return
+        tabel_beasiswa(daftar)
         try:
             sid = int(input("Pilih ID beasiswa yang mau dipakai: ").strip())
         except Exception:
@@ -419,6 +441,33 @@ def bayar_ukt(user):
     except EOFError:
         print("\nJangan CTRL+Z")
         bayar_ukt(user)
+
+def topup_saldo(user):
+    try:
+        tambahsaldo = input("Jumlah Top Up Saldo (angka): ").strip()
+        try:
+            ts = int(tambahsaldo)
+            if ts <= 0:
+                print("Jumlah harus lebih dari 0")
+                return
+        except Exception:
+            print("Saldo harus angka")
+            return
+        cur = user.get('saldo', 0)
+        try:
+            cur = int(cur)
+        except Exception:
+            try:
+                cur = int(float(cur))
+            except Exception:
+                cur = 0
+        user['saldo'] = cur + ts
+        simpan(FILE_AKUN, akun_data)
+        print(f"Top up berhasil. Saldo sekarang: Rp {user['saldo']:,}")
+    except KeyboardInterrupt:
+        print("\nTop up dibatalkan (CTRL+C)")
+    except EOFError:
+        print("\nTop up dibatalkan (EOF)")
 
 def menu_admin(user):
     try:
@@ -463,16 +512,27 @@ def menu_mahasiswa(user):
             print('1. Lihat beasiswa')
             print('2. Bayar UKT')
             print('3. Lihat saldo')
-            print('4. Lihat invoice saya')
+            print('4. Top Up saldo')
+            print('5. Lihat invoice saya')
             print('0. Logout')
             pilih = input('Pilih: ').strip()
             if pilih == '1':
-                tabel_beasiswa(daftar_beasiswa)
+                be = user.get('beasiswa')
+                try:
+                    daftar = list(be) if bisa_di_iter(be) else [be]
+                except Exception:
+                    daftar = [be]
+                if not daftar:
+                    print("Belum ada beasiswa")
+                    return
+                tabel_beasiswa(daftar)
             elif pilih == '2':
                 bayar_ukt(user)
             elif pilih == '3':
                 print(f"Saldo: Rp {user.get('saldo',0):,}")
             elif pilih == '4':
+                topup_saldo(user)
+            elif pilih == '5':
                 my = [x for x in daftar_transaksi if x.get('username') == user.get('username')]
                 if not my:
                     print('Belum ada invoice')
@@ -492,8 +552,7 @@ def menu_mahasiswa(user):
 def main():
     try:
         while True:
-            print('\nPLIISSSS BAAANNGGG ACC BAAAANNNGGGGGG')
-            print('\n=== Aplikasi Beasiswa (Gaya Pemula) ===')
+            print('\n=== Menu Login ===')
             print('1. Login')
             print('2. Daftar')
             print('3. Keluar')
